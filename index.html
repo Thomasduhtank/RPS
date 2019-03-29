@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ro Sham Beax by TheTank</title>
+  </head>
+  <body>
+    <h2>Please enable browser's console to see the game.</h2>
+    <script>
+      let playerScore = 0;
+      let computerScore = 0;
+      let round = 1;
+
+      function computerPlay() {
+        options = ["rock", "paper", "scissors"];
+        randomOption = Math.floor(Math.random() * 3);
+        return options[randomOption];
+      }
+      function gamePlay(playerSelection, computerSelection) {
+        playerSelection = playerSelection.toLowerCase();
+        if (playerSelection === "rock" && computerSelection === "scissors") {
+          playerScore++;
+          return "Booyah! You Win! Rock beats Scissors!";
+        } else if (
+          playerSelection === "rock" &&
+          computerSelection === "paper"
+        ) {
+          computerScore++;
+          return "You Lose! Paper beats rock! Try Again!";
+        } else if (playerSelection === "rock" && computerSelection === "rock") {
+          return "It's a draw! Rock vs Rock.";
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "scissors"
+        ) {
+          return "Wow, a tie! Scissors vs scissors.";
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "paper"
+        ) {
+          playerScore++;
+          return "You win! Scissors beats paper!";
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "rock"
+        ) {
+          computerScore++;
+          return "Ah Man, You lose! rock beats scissors!";
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "scissors"
+        ) {
+          computerScore++;
+          return "You lose! Scissors beats paper!";
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "rock"
+        ) {
+          playerScore++;
+          return "You Win! Paper beats rock!";
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "paper"
+        ) {
+          return "It's a draw! Paper vs paper.";
+        } else {
+          return "error";
+        }
+      }
+
+      function game() {
+        while (round <= 5) {
+          console.log(
+            `Current score: Player ${playerScore}, Computer ${computerScore}`
+          );
+          console.log(`Round: ${round} `);
+          round++;
+          let playerSelection = prompt(
+            "Please choose rock, paper, or scissors."
+          );
+          console.log(gamePlay(playerSelection, computerPlay()));
+        }
+
+        if (playerScore > computerScore) {
+          return "Player Wins Match!" + playerScore + ":" + computerScore;
+        } else if (playerScore < computerScore) {
+          return "Computer Wins Match! " + playerScore + ":" + computerScore;
+        } else {
+          return "Match is a draw!" + playerScore + ":" + computerScore;
+        }
+      }
+
+      console.log(game());
+    </script>
+  </body>
+</html>
